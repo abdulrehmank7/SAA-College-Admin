@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "83530900423",
+    "firebase_url": "https://saa-admin.firebaseio.com",
+    "project_id": "saa-admin",
+    "storage_bucket": "saa-admin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83530900423:android:d9695612aaec436924afe2",
+        "android_client_info": {
+          "package_name": "com.arkapp.saa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "83530900423-l2rsi5t3h1udpd7g9pqibqqddaou9ruf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAievczfy7UMTfLxGt8zu6D65rETI4zhcY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "83530900423-l2rsi5t3h1udpd7g9pqibqqddaou9ruf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

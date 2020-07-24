@@ -12,8 +12,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.arkapp.saa.R;
+import com.arkapp.saa.data.firestore.Queries;
+import com.arkapp.saa.data.models.UserData;
 import com.arkapp.saa.databinding.FragmentSignUpBinding;
 
+import static com.arkapp.saa.data.firestore.Utils.isValidTask;
 import static com.arkapp.saa.utility.ViewUtilsKt.disableTouch;
 import static com.arkapp.saa.utility.ViewUtilsKt.enableTouch;
 import static com.arkapp.saa.utility.ViewUtilsKt.getValue;
@@ -22,11 +25,13 @@ import static com.arkapp.saa.utility.ViewUtilsKt.isDoubleClicked;
 import static com.arkapp.saa.utility.ViewUtilsKt.isEmailValid;
 import static com.arkapp.saa.utility.ViewUtilsKt.isEmpty;
 import static com.arkapp.saa.utility.ViewUtilsKt.show;
+import static com.arkapp.saa.utility.ViewUtilsKt.toast;
 
 
 public class SignUpFragment extends Fragment {
 
     private FragmentSignUpBinding binding;
+    private Queries queries = new Queries();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -98,6 +103,36 @@ public class SignUpFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) { binding.userName.setError(null);}
+        });
+        binding.signUpUserFirstNameEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+
+            @Override
+            public void afterTextChanged(Editable s) { binding.signUpUserFirstName.setError(null);}
+        });
+        binding.signUpUserLastNameEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+
+            @Override
+            public void afterTextChanged(Editable s) { binding.signUpUserLastName.setError(null);}
+        });
+        binding.signUpPhoneEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+
+            @Override
+            public void afterTextChanged(Editable s) { binding.signUpPhone.setError(null);}
         });
         binding.passwordEt.addTextChangedListener(new TextWatcher() {
             @Override
@@ -173,10 +208,34 @@ public class SignUpFragment extends Fragment {
     }
 
     private void onSignUpClicked() {
+        if (isEmpty(binding.signUpUserFirstNameEt)) {
+            binding.signUpUserFirstName.setError("First name required!");
+
+            hide(binding.signupProgress);
+            enableTouch(requireActivity().getWindow());
+            return;
+        }
+
+        if (isEmpty(binding.signUpUserLastNameEt)) {
+            binding.signUpUserName.setError("Last name required!");
+
+            hide(binding.signUpUserLastName);
+            enableTouch(requireActivity().getWindow());
+            return;
+        }
+
         if (isEmpty(binding.signUpUserNameEt)) {
             binding.signUpUserName.setError("Username required!");
 
             hide(binding.signupProgress);
+            enableTouch(requireActivity().getWindow());
+            return;
+        }
+
+        if (isEmpty(binding.signUpPhoneEt)) {
+            binding.signUpUserName.setError("Phone required!");
+
+            hide(binding.signUpPhone);
             enableTouch(requireActivity().getWindow());
             return;
         }
@@ -237,6 +296,50 @@ public class SignUpFragment extends Fragment {
             return;
         }
 
-        //checkIfAccountExist();
+        checkUsernameExists();
     }
+
+    private void checkUsernameExists() {
+        queries.checkUsername(getValue(binding.signUpUserNameEt))
+                .addOnCompleteListener(task -> {
+                    if (isValidTask(task)) {
+                        binding.signUpUserName.setError("username already taken. Use different username!");
+
+                        hide(binding.signupProgress);
+                        enableTouch(requireActivity().getWindow());
+                        return;
+                    } else checkEmailExists();
+                });
+    }
+
+    private void checkEmailExists() {
+        queries.checkEmail(getValue(binding.signUpEmailEt))
+                .addOnCompleteListener(task -> {
+                    if (isValidTask(task)) {
+                        binding.signUpEmail.setError("email already taken. Use different email!");
+
+                        hide(binding.signupProgress);
+                        enableTouch(requireActivity().getWindow());
+                        return;
+                    } else addUserDataToDB();
+                });
+    }
+
+    private void addUserDataToDB() {
+        queries.addUser(new UserData(
+                getValue(binding.signUpUserFirstNameEt),
+                getValue(binding.signUpUserLastNameEt),
+                getValue(binding.signUpEmailEt),
+                getValue(binding.signUpPhoneEt),
+                getValue(binding.signUpUserNameEt),
+                getValue(binding.signUpPasswordEt)
+        )).addOnCompleteListener(task -> {
+            hide(binding.signupProgress);
+            enableTouch(requireActivity().getWindow());
+
+            if (task.isSuccessful()) toast(requireContext(), "Successfully Signed up!");
+            else toast(requireContext(), "Sign up failed. Please try again!");
+        });
+    }
+
 }
