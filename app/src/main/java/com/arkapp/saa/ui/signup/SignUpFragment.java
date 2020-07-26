@@ -14,8 +14,10 @@ import androidx.fragment.app.Fragment;
 import com.arkapp.saa.R;
 import com.arkapp.saa.data.firestore.Queries;
 import com.arkapp.saa.data.models.UserData;
+import com.arkapp.saa.data.preferences.PrefRepository;
 import com.arkapp.saa.databinding.FragmentSignUpBinding;
 
+import static androidx.navigation.fragment.NavHostFragment.findNavController;
 import static com.arkapp.saa.data.firestore.Utils.isValidTask;
 import static com.arkapp.saa.utility.ViewUtilsKt.disableTouch;
 import static com.arkapp.saa.utility.ViewUtilsKt.enableTouch;
@@ -30,6 +32,7 @@ import static com.arkapp.saa.utility.ViewUtilsKt.toast;
 
 public class SignUpFragment extends Fragment {
 
+    private PrefRepository prefRepository;
     private FragmentSignUpBinding binding;
     private Queries queries = new Queries();
 
@@ -43,6 +46,8 @@ public class SignUpFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        prefRepository = new PrefRepository(requireContext());
 
         binding.signUpBtn.setOnClickListener(v -> {
             if (isDoubleClicked(1000)) return;
@@ -204,7 +209,45 @@ public class SignUpFragment extends Fragment {
             return;
         }
 
-        //checkCredentials();
+        if (isEmailValid(getValue(binding.userNameEt))) {
+            checkEmailForLogin();
+        } else {
+            checkUsernameForLogin();
+        }
+    }
+
+    private void checkUsernameForLogin() {
+        queries.checkUsername(getValue(binding.userNameEt))
+                .addOnCompleteListener(task -> {
+                    hide(binding.loginProgress);
+                    enableTouch(requireActivity().getWindow());
+
+                    if (isValidTask(task)) {
+                        UserData data = task.getResult().toObjects(UserData.class).get(0);
+                        if (data.getPassword().equals(getValue(binding.passwordEt))) {
+                            toast(requireContext(), "Login Successful!");
+                            prefRepository.setLoggedIn(true);
+                            findNavController(this).navigate(R.id.action_signUpFragment_to_homeFragment);
+                        } else binding.password.setError("Password is wrong. Please check!");
+                    } else binding.userName.setError("Username is wrong. Please check!");
+                });
+    }
+
+    private void checkEmailForLogin() {
+        queries.checkEmail(getValue(binding.userNameEt))
+                .addOnCompleteListener(task -> {
+                    hide(binding.loginProgress);
+                    enableTouch(requireActivity().getWindow());
+
+                    if (isValidTask(task)) {
+                        UserData data = task.getResult().toObjects(UserData.class).get(0);
+                        if (data.getPassword().equals(getValue(binding.passwordEt))) {
+                            toast(requireContext(), "Login Successful!");
+                            prefRepository.setLoggedIn(true);
+                            findNavController(this).navigate(R.id.action_signUpFragment_to_homeFragment);
+                        } else binding.password.setError("Password is wrong. Please check!");
+                    } else binding.userName.setError("Email is wrong. Please check!");
+                });
     }
 
     private void onSignUpClicked() {
@@ -303,7 +346,7 @@ public class SignUpFragment extends Fragment {
         queries.checkUsername(getValue(binding.signUpUserNameEt))
                 .addOnCompleteListener(task -> {
                     if (isValidTask(task)) {
-                        binding.signUpUserName.setError("username already taken. Use different username!");
+                        binding.signUpUserName.setError("Username already taken!");
 
                         hide(binding.signupProgress);
                         enableTouch(requireActivity().getWindow());
@@ -316,7 +359,7 @@ public class SignUpFragment extends Fragment {
         queries.checkEmail(getValue(binding.signUpEmailEt))
                 .addOnCompleteListener(task -> {
                     if (isValidTask(task)) {
-                        binding.signUpEmail.setError("email already taken. Use different email!");
+                        binding.signUpEmail.setError("Email already taken!");
 
                         hide(binding.signupProgress);
                         enableTouch(requireActivity().getWindow());
@@ -337,8 +380,11 @@ public class SignUpFragment extends Fragment {
             hide(binding.signupProgress);
             enableTouch(requireActivity().getWindow());
 
-            if (task.isSuccessful()) toast(requireContext(), "Successfully Signed up!");
-            else toast(requireContext(), "Sign up failed. Please try again!");
+            if (task.isSuccessful()) {
+                toast(requireContext(), "Successfully Signed up!");
+                prefRepository.setLoggedIn(true);
+                findNavController(this).navigate(R.id.action_signUpFragment_to_homeFragment);
+            } else toast(requireContext(), "Sign up failed. Please try again!");
         });
     }
 

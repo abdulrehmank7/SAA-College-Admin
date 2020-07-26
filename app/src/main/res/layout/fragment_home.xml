@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.home.HomeFragment">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="64dp"
+            app:cardElevation="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@mipmap/ic_launcher" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/montserrat_bold"
+            android:gravity="center"
+            android:text="@string/home"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:context=".ui.home.HomeFragment">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvNewCourse"
+                    android:layout_width="98dp"
+                    android:layout_height="98dp"
+                    android:layout_marginTop="32dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/cvCourse"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:rippleColor="@color/blue_grey_500">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_book_1" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/new_course"
+                    app:layout_constraintEnd_toEndOf="@+id/cvNewCourse"
+                    app:layout_constraintStart_toStartOf="@+id/cvNewCourse"
+                    app:layout_constraintTop_toBottomOf="@+id/cvNewCourse" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvCourse"
+                    android:layout_width="98dp"
+                    android:layout_height="98dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/cvNewCourse"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/cvNewCourse"
+                    app:layout_constraintTop_toTopOf="@+id/cvNewCourse"
+                    app:rippleColor="@color/blue_grey_500">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_books" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/courses"
+                    app:layout_constraintEnd_toEndOf="@+id/cvCourse"
+                    app:layout_constraintStart_toStartOf="@+id/cvCourse"
+                    app:layout_constraintTop_toBottomOf="@+id/cvCourse" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvCourseStatus"
+                    android:layout_width="98dp"
+                    android:layout_height="98dp"
+                    android:layout_marginTop="42dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/cvDiplomaStatus"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cvNewCourse"
+                    app:rippleColor="@color/blue_grey_500">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_book" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/courses_status"
+                    app:layout_constraintEnd_toEndOf="@+id/cvCourseStatus"
+                    app:layout_constraintStart_toStartOf="@+id/cvCourseStatus"
+                    app:layout_constraintTop_toBottomOf="@+id/cvCourseStatus" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvDiplomaStatus"
+                    android:layout_width="98dp"
+                    android:layout_height="98dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/cvCourseStatus"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/cvCourseStatus"
+                    app:layout_constraintTop_toTopOf="@+id/cvCourseStatus"
+                    app:rippleColor="@color/blue_grey_500">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_degree" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/diploma_status"
+                    app:layout_constraintEnd_toEndOf="@+id/cvDiplomaStatus"
+                    app:layout_constraintStart_toStartOf="@+id/cvDiplomaStatus"
+                    app:layout_constraintTop_toBottomOf="@+id/cvDiplomaStatus" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvScholarshipStatus"
+                    android:layout_width="98dp"
+                    android:layout_height="98dp"
+                    android:layout_marginTop="42dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/cvFellowShipStatus"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cvCourseStatus"
+                    app:rippleColor="@color/blue_grey_500">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_graduation" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/scholarship_status"
+                    app:layout_constraintEnd_toEndOf="@+id/cvScholarshipStatus"
+                    app:layout_constraintStart_toStartOf="@+id/cvScholarshipStatus"
+                    app:layout_constraintTop_toBottomOf="@+id/cvScholarshipStatus" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvFellowShipStatus"
+                    android:layout_width="98dp"
+                    android:layout_height="98dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/cvScholarshipStatus"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/cvScholarshipStatus"
+                    app:layout_constraintTop_toTopOf="@+id/cvScholarshipStatus"
+                    app:rippleColor="@color/blue_grey_500">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_graduate" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/fellowship_status"
+                    app:layout_constraintEnd_toEndOf="@+id/cvFellowShipStatus"
+                    app:layout_constraintStart_toStartOf="@+id/cvFellowShipStatus"
+                    app:layout_constraintTop_toBottomOf="@+id/cvFellowShipStatus" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvNotification"
+                    android:layout_width="98dp"
+                    android:layout_height="98dp"
+                    android:layout_marginTop="42dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/cvAnalytics"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cvScholarshipStatus"
+                    app:rippleColor="@color/blue_grey_500">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_bell" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/notifications"
+                    app:layout_constraintEnd_toEndOf="@+id/cvNotification"
+                    app:layout_constraintStart_toStartOf="@+id/cvNotification"
+                    app:layout_constraintTop_toBottomOf="@+id/cvNotification" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvAnalytics"
+                    android:layout_width="98dp"
+                    android:layout_height="98dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/cvNotification"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/cvNotification"
+                    app:layout_constraintTop_toTopOf="@+id/cvNotification"
+                    app:rippleColor="@color/blue_grey_500">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_light_bulb" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/analytics"
+                    app:layout_constraintEnd_toEndOf="@+id/cvAnalytics"
+                    app:layout_constraintStart_toStartOf="@+id/cvAnalytics"
+                    app:layout_constraintTop_toBottomOf="@+id/cvAnalytics" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvLogout"
+                    android:layout_width="98dp"
+                    android:layout_height="98dp"
+                    android:layout_marginTop="42dp"
+                    android:layout_marginBottom="48dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/cvNotification"
+                    app:layout_constraintTop_toBottomOf="@+id/cvNotification"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:rippleColor="@color/blue_grey_500">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_floppy_disk" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/logout"
+                    app:layout_constraintEnd_toEndOf="@+id/cvLogout"
+                    app:layout_constraintStart_toStartOf="@+id/cvLogout"
+                    app:layout_constraintTop_toBottomOf="@+id/cvLogout" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

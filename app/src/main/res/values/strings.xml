@@ -10,10 +10,56 @@
     <string name="already_have_account">Already have an account?</string>
     <string name="enter_username">Enter username</string>
     <string name="enter_email">Enter email</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="enter_last_name">Enter last name</string>
     <string name="enter_first_name">Enter first name</string>
     <string name="enter_phone">Enter phone</string>
+    <string name="new_course">New Course</string>
+    <string name="courses">Courses</string>
+    <string name="courses_status">Courses Status</string>
+    <string name="diploma_status">Diploma Status</string>
+    <string name="scholarship_status">Scholarship Status</string>
+    <string name="fellowship_status">Fellowship Status</string>
+    <string name="notifications">Notifications</string>
+    <string name="analytics">Analytics</string>
+    <string name="logout">Logout</string>
+    <string name="login_sign_up">Login/Sign up</string>
+    <string name="course">Course</string>
+    <string name="home">Home</string>
+    <string name="course_title">Course Title</string>
+    <string name="course_outline">Course Outline</string>
+    <string name="course_fee">Course Fee($)</string>
+    <string name="course_duration">Course Duration(Days)</string>
+    <string name="start_date">Course Start Date</string>
+    <string name="end_date">Course End Date</string>
+    <string name="submit">Submit</string>
+    <string name="delete">Delete</string>
+    <string name="update">Update</string>
+    <string name="select_job_sector">Select Job Sector</string>
+    <string name="select_school">Select School</string>
+    <string name="select_course_category">Select Course Category</string>
+
+    <string-array name="job_sector">
+        <item>Air Navigation Service Provider</item>
+        <item>Airlines</item>
+        <item>Airport Authorities\n/ Operators</item>
+        <item>Civil Aviation Authorities\n/ Governments</item>
+        <item>Fire and Emergency Services</item>
+        <item>Maintenance, Repair and\nOverhaul Organisations</item>
+    </string-array>
+
+    <string-array name="school">
+        <item>Air Traffic Services</item>
+        <item>Airlines Emergency Services</item>
+        <item>Aviation Management</item>
+        <item>Aviation Safety &amp; Security</item>
+    </string-array>
+
+    <string-array name="course_category">
+        <item>Air Transport</item>
+        <item>Aviation Medicine</item>
+        <item>Aviation Security</item>
+        <item>Safety Management</item>
+        <item>Safety Oversight</item>
+    </string-array>
 
 </resources>
