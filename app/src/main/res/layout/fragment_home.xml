@@ -134,7 +134,8 @@
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cvNewCourse"
-                    app:rippleColor="@color/blue_grey_500">
+                    app:rippleColor="@color/blue_grey_500"
+                    tools:visibility="gone">
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -151,7 +152,8 @@
                     android:text="@string/courses_status"
                     app:layout_constraintEnd_toEndOf="@+id/cvCourseStatus"
                     app:layout_constraintStart_toStartOf="@+id/cvCourseStatus"
-                    app:layout_constraintTop_toBottomOf="@+id/cvCourseStatus" />
+                    app:layout_constraintTop_toBottomOf="@+id/cvCourseStatus"
+                    tools:visibility="gone" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cvDiplomaStatus"
@@ -167,7 +169,8 @@
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/cvCourseStatus"
                     app:layout_constraintTop_toTopOf="@+id/cvCourseStatus"
-                    app:rippleColor="@color/blue_grey_500">
+                    app:rippleColor="@color/blue_grey_500"
+                    tools:visibility="gone">
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -184,7 +187,8 @@
                     android:text="@string/diploma_status"
                     app:layout_constraintEnd_toEndOf="@+id/cvDiplomaStatus"
                     app:layout_constraintStart_toStartOf="@+id/cvDiplomaStatus"
-                    app:layout_constraintTop_toBottomOf="@+id/cvDiplomaStatus" />
+                    app:layout_constraintTop_toBottomOf="@+id/cvDiplomaStatus"
+                    tools:visibility="gone" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cvScholarshipStatus"
@@ -200,7 +204,8 @@
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cvCourseStatus"
-                    app:rippleColor="@color/blue_grey_500">
+                    app:rippleColor="@color/blue_grey_500"
+                    tools:visibility="gone">
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -217,7 +222,8 @@
                     android:text="@string/scholarship_status"
                     app:layout_constraintEnd_toEndOf="@+id/cvScholarshipStatus"
                     app:layout_constraintStart_toStartOf="@+id/cvScholarshipStatus"
-                    app:layout_constraintTop_toBottomOf="@+id/cvScholarshipStatus" />
+                    app:layout_constraintTop_toBottomOf="@+id/cvScholarshipStatus"
+                    tools:visibility="gone" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cvFellowShipStatus"
@@ -233,7 +239,8 @@
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/cvScholarshipStatus"
                     app:layout_constraintTop_toTopOf="@+id/cvScholarshipStatus"
-                    app:rippleColor="@color/blue_grey_500">
+                    app:rippleColor="@color/blue_grey_500"
+                    tools:visibility="gone">
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -250,7 +257,8 @@
                     android:text="@string/fellowship_status"
                     app:layout_constraintEnd_toEndOf="@+id/cvFellowShipStatus"
                     app:layout_constraintStart_toStartOf="@+id/cvFellowShipStatus"
-                    app:layout_constraintTop_toBottomOf="@+id/cvFellowShipStatus" />
+                    app:layout_constraintTop_toBottomOf="@+id/cvFellowShipStatus"
+                    tools:visibility="gone" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cvNotification"
@@ -266,7 +274,8 @@
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cvScholarshipStatus"
-                    app:rippleColor="@color/blue_grey_500">
+                    app:rippleColor="@color/blue_grey_500"
+                    tools:visibility="gone">
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -283,7 +292,8 @@
                     android:text="@string/notifications"
                     app:layout_constraintEnd_toEndOf="@+id/cvNotification"
                     app:layout_constraintStart_toStartOf="@+id/cvNotification"
-                    app:layout_constraintTop_toBottomOf="@+id/cvNotification" />
+                    app:layout_constraintTop_toBottomOf="@+id/cvNotification"
+                    tools:visibility="gone" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cvAnalytics"
@@ -299,7 +309,8 @@
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/cvNotification"
                     app:layout_constraintTop_toTopOf="@+id/cvNotification"
-                    app:rippleColor="@color/blue_grey_500">
+                    app:rippleColor="@color/blue_grey_500"
+                    tools:visibility="gone">
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -316,7 +327,8 @@
                     android:text="@string/analytics"
                     app:layout_constraintEnd_toEndOf="@+id/cvAnalytics"
                     app:layout_constraintStart_toStartOf="@+id/cvAnalytics"
-                    app:layout_constraintTop_toBottomOf="@+id/cvAnalytics" />
+                    app:layout_constraintTop_toBottomOf="@+id/cvAnalytics"
+                    tools:visibility="gone" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cvLogout"
@@ -330,7 +342,7 @@
                     app:cardCornerRadius="8dp"
                     app:cardElevation="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/cvNotification"
+                    app:layout_constraintStart_toStartOf="@+id/cvNewCourse"
                     app:layout_constraintTop_toBottomOf="@+id/cvNotification"
                     app:layout_constraintVertical_bias="0.0"
                     app:rippleColor="@color/blue_grey_500">
